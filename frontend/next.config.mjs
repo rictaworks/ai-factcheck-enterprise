@@ -1,15 +1,12 @@
 /** @type {import('next').NextConfig} */
 
-const isProd = process.env.NODE_ENV === "production";
+const isDeployment =
+  process.env.VERCEL === "1" || process.env.RAILWAY_ENVIRONMENT !== undefined;
 
-if (isProd && !process.env.NEXT_PUBLIC_API_URL) {
-  throw new Error("NEXT_PUBLIC_API_URL is required in production");
+if (isDeployment && !process.env.NEXT_PUBLIC_API_URL) {
+  throw new Error("NEXT_PUBLIC_API_URL is required in deployment");
 }
 
-const nextConfig = {
-  env: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001",
-  },
-};
+const nextConfig = {};
 
 export default nextConfig;

@@ -1,5 +1,6 @@
 {
-  "extends": ["next/core-web-vitals"],
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "root": true,
   "ignorePatterns": [".next/**", "out/**", "build/**", "next-env.d.ts"],
   "rules": {
     "no-alert": "error",
