@@ -2,6 +2,7 @@
 build/
 dist/
 *.egg-info/
+*.whl
 
 # Python キャッシュ
 __pycache__/
