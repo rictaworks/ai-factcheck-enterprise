@@ -18,5 +18,5 @@ test:
 
 # PostgreSQL is used in production via DATABASE_URL (Railway injects this automatically).
 production:
-  url: <%= ENV.fetch("DATABASE_URL") %>
+  url: <%= ENV["DATABASE_URL"] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
