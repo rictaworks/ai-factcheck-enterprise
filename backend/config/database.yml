@@ -1,0 +1,29 @@
+# Database Configuration for AI Factcheck Enterprise
+#
+# In development and test environments, we use SQLite.
+# In production, we use PostgreSQL.
+
+default: &default
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: db/development.sqlite3
+
+test:
+  <<: *default
+  database: db/test.sqlite3
+
+# PostgreSQL is used in production.
+# Active Record configuration will merge DATABASE_URL if it's set in environment.
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: <%= ENV.fetch("DATABASE_NAME") { "backend_production" } %>
+  username: <%= ENV.fetch("DATABASE_USERNAME") { "backend" } %>
+  password: <%= ENV["BACKEND_DATABASE_PASSWORD"] %>
+  host: <%= ENV.fetch("DATABASE_HOST") { "localhost" } %>
+  port: <%= ENV.fetch("DATABASE_PORT") { "5432" } %>
