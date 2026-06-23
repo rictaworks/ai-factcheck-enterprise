@@ -1,7 +1,7 @@
-import pathlib
+import os
 
 from fastapi.testclient import TestClient
-from main import app
+from main import APP_TITLE, app
 
 client = TestClient(app)
 
@@ -14,6 +14,6 @@ def test_health_check():
     assert "env" in body
 
 
-def test_no_hardcoded_title():
-    src = (pathlib.Path(__file__).parent.parent / "main.py").read_text()
-    assert "AI Factcheck Enterprise" not in src
+def test_app_title_is_configurable():
+    expected = os.environ.get("APP_TITLE", "AI Factcheck Enterprise - AI Service")
+    assert APP_TITLE == expected

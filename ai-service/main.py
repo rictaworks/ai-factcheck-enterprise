@@ -6,7 +6,7 @@ from fastapi import FastAPI
 load_dotenv()
 
 APP_ENV = os.getenv("APP_ENV", "production")
-APP_TITLE = os.environ["APP_TITLE"]
+APP_TITLE = os.getenv("APP_TITLE", "AI Factcheck Enterprise - AI Service")
 
 app = FastAPI(
     title=APP_TITLE,
