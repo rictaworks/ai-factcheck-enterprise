@@ -1,0 +1,23 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "root": true,
+  "ignorePatterns": [".next/**", "out/**", "build/**", "next-env.d.ts"],
+  "rules": {
+    "no-alert": "error",
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "Literal[value=/[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]/]",
+        "message": "Emoji is prohibited."
+      },
+      {
+        "selector": "TemplateElement[value.cooked=/[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]/]",
+        "message": "Emoji is prohibited."
+      },
+      {
+        "selector": "JSXText[value=/[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]/]",
+        "message": "Emoji is prohibited."
+      }
+    ]
+  }
+}

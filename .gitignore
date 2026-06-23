@@ -62,3 +62,8 @@ TASKS/
 WORK/
 ai-factcheck-mvp-spec.md
 app-ui/
+
+# パッケージマネージャキャッシュ
+.npm-cache/
+.pnpm-store/
+
