@@ -32,7 +32,7 @@ end
 worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3001 for dev (3000 is Next.js).
-port ENV.fetch("PORT") { ENV["RAILS_ENV"] == "production" ? 3000 : 3001 }
+port ENV.fetch("PORT") { rails_env == "production" ? 3000 : 3001 }
 
 # Specifies the `environment` that Puma will run in.
 environment rails_env

@@ -1,18 +1,14 @@
 # Be sure to restart your server when you modify this file.
 
-allowed_origins =
-  if Rails.env.development?
-    [
-      ENV.fetch("FRONTEND_ORIGIN", "http://localhost:3000"),
-      "http://localhost:3000"
-    ]
-  else
-    [ENV.fetch("FRONTEND_ORIGIN")]
-  end
-
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins(*allowed_origins)
+    origins(
+      *if Rails.env.development?
+        [ENV.fetch("FRONTEND_ORIGIN", "http://localhost:3000")]
+      else
+        [ENV.fetch("FRONTEND_ORIGIN")]
+      end
+    )
 
     resource "/api/*",
       headers: :any,

@@ -16,14 +16,7 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-# PostgreSQL is used in production.
-# Active Record configuration will merge DATABASE_URL if it's set in environment.
+# PostgreSQL is used in production via DATABASE_URL (Railway injects this automatically).
 production:
-  adapter: postgresql
-  encoding: unicode
+  url: <%= ENV.fetch("DATABASE_URL") %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: <%= ENV.fetch("DATABASE_NAME") { "backend_production" } %>
-  username: <%= ENV.fetch("DATABASE_USERNAME") { "backend" } %>
-  password: <%= ENV["BACKEND_DATABASE_PASSWORD"] %>
-  host: <%= ENV.fetch("DATABASE_HOST") { "localhost" } %>
-  port: <%= ENV.fetch("DATABASE_PORT") { "5432" } %>
