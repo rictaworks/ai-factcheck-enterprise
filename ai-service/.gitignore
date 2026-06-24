@@ -1,0 +1,22 @@
+# Python パッケージビルド成果物
+build/
+dist/
+*.egg-info/
+*.whl
+
+# Python キャッシュ
+__pycache__/
+*.py[cod]
+*.pyo
+
+# pytest キャッシュ
+.pytest_cache/
+
+# 仮想環境
+.venv/
+venv/
+
+# 環境変数
+.env
+.env.*
+!.env.example
